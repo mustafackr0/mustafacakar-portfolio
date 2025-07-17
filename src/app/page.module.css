@@ -1,121 +1,180 @@
+/* page.module.css */
+
+/* — Mevcut Tanımlarınız — */
 .container {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    padding: 2rem;
-  }
-  
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
 .header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center !important;
-
-    p{
-        font-size: 1.4rem;
-        font-weight: 500;
-        color: #ffffff;
-    }
-
-    
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center !important;
 }
+
+.header p {
+  font-size: 1.4rem;
+  color: #808080;
+  font-weight: 500;
+}
+
 .tittleContainer {
-    flex-direction: column;
-    padding-left: 2rem;
+  flex-direction: column;
+  padding-left: 2rem;
 }
 
-.tittle{
-    font-size: 4rem;
-    font-weight: 600;
+.tittle {
+  font-size: 4rem;
+  font-weight: 600;
+  color: #cdcbcb;
+
 }
 
-.subTittle{
-    font-size: 1.6rem;
-    font-weight: 500;
-    /* color: #cf4f4f; */
+.subTittle {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #808080;
 }
-.socialLinks{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 1rem;
+
+.socialLinks {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
 }
+
 .avatar {
-    border-radius: 50%;
+  border-radius: 50%;
 }
 
-
-  .heroText {
-    text-align: center;
-  }
-.contentContainer
-{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 2rem;
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
 }
 
 .contentContainer h2 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
 }
 
 .contentContainer p {
-    font-size: 1.2rem;
-    color: #4b5563; /* gray-700 */
-    text-align: center;
-    max-width: 800px;
+  font-size: 1.2rem;
+  color: #4b5563;
+  text-align: center;
+  max-width: 800px;
 }
-/* Modal Styles */
+
+/* Modal */
 .modalOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-  }
-  
-  .modalContent {
-    background: white;
-    padding: 0;
-    margin: 0;
-    width: 100vw;
-    height: 100vh;
-    border-radius: 0;
-    overflow: hidden;
-    position: relative;
-  }
-  
-  .closeButton {
-    position: absolute;
-    top: 6rem;
-    right: 2rem;
-    background: transparent;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: white;
+  width: 100vw; height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.closeButton {
+  position: absolute;
+  top: 6rem; right: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.resumeButton {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: background-color 0.2s;
+  max-width: fit-content;
+}
+
+.resumeButton:hover {
+  background-color: #1e40af;
+}
+
+/* — yeni ekleme: mobil uyumluluk için breakpoints — */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
   }
 
-  .resumeButton {
-    margin-top: 1rem;
-    padding: 0.75rem 1.5rem;
-    background-color: #2563eb;
-    color: white;
-    border: none;
-    border-radius: 0.375rem;
-    cursor: pointer;
-    font-size: 1.5rem;
-    transition: background-color 0.2s;
-    max-width: fit-content;
+  .header {
+    /* yataydan dikeye geç */
+    flex-direction: column;
+    text-align: center;
   }
-  .resumeButton:hover {
-    background-color: #1e40af;
+
+  .avatar {
+    /* avatarı daha küçük yap */
+    width: 200px !important;
+    height: 200px !important;
+    margin-bottom: 1rem;
   }
+
+  .tittleContainer {
+    padding-left: 0;
+  }
+
+  .tittle {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+
+  .subTittle {
+    font-size: 1.2rem;
+  }
+
+  .socialLinks {
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .contentContainer {
+    margin-top: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .contentContainer h2 {
+    font-size: 2rem;
+  }
+
+  .contentContainer p {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+
+  .modalContent {
+    /* modal içeriği tam ekran yerine biraz kenar boşluğu ile */
+    width: 95vw;
+    height: 90vh;
+    border-radius: 0.5rem;
+  }
+
+  .closeButton {
+    top: 1rem;
+    right: 1rem;
+  }
+}

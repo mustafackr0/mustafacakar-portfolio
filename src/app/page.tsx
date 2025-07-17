@@ -1,4 +1,4 @@
-/* File: src/app/page.tsx */
+// File: src/app/page.tsx
 'use client'
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
@@ -14,6 +14,15 @@ export default function Home() {
   useEffect(() => {
     setMounted(true)
   }, [])
+
+  // Mobil kullanıcılar için doğrudan yeni sekmede PDF açma
+  const handleResumeClick = () => {
+    if (mounted && window.innerWidth <= 768) {
+      window.open('/MustafaÇakar.pdf', '_blank')
+    } else {
+      setModalOpen(true)
+    }
+  }
 
   return (
     <main className={styles.container}>
@@ -46,7 +55,7 @@ export default function Home() {
               <AiFillInstagram size={40} />
             </a>
           </div>
-          <button onClick={() => setModalOpen(true)} className={styles.resumeButton}>
+          <button onClick={handleResumeClick} className={styles.resumeButton}>
             Özgeçmişi Görüntüle
           </button>
         </div>
@@ -62,6 +71,7 @@ export default function Home() {
             <button className={styles.closeButton} onClick={() => setModalOpen(false)}>
               <AiOutlineClose size={24} />
             </button>
+            {/* PDF embed; ascii-safe isimlendirilmiş resume.pdf */}
             <iframe
               src="/MustafaÇakar.pdf"
               style={{ width: '100%', height: '100%', border: 'none' }}

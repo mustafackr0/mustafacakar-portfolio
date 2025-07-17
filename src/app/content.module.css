@@ -1,189 +1,199 @@
 /* File: src/components/content.module.css */
 
-.mainContainer{
-    display: flex; 
-    width: 100%;
-    flex-direction: column;
-    padding: 2rem;
-    gap: 2rem;
+/* Ana kapsayıcı */
+.mainContainer {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 2rem;
 }
+
+/* Projeler bölümü */
 .projectsWrapper {
-    display: flex;
-    flex-direction: row;
-    padding: 2rem;
-    gap: 2rem;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  gap: 2rem;
+}
 
-  .referancesWrapper {
-    display: flex;
-    flex-direction: row;
-    padding: 2rem;
-    gap: 2rem;
-  }
-  
-  .sectionHeader {
-    margin-top: 2rem;
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  
-  .sectionTitle {
-    font-size: 2.25rem;
-    font-weight: 700;
-    color: #ffffff;
-    margin-bottom: 0.5rem;
-  }
-  
-  .sectionSubtitle {
-    font-size: 1rem;
-    color: #9ca3af;
-  }
-  
+/* Referanslar bölümü */
+.referenceWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+/* Kart ızgaraları */
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  width: 100%;
+  justify-items: stretch;
+}
+
+.referenceGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  width: 100%;
+  justify-items: stretch;
+}
+
+/* Kart stili */
+.card {
+  background: #ffffff;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 0.5rem;
+}
+
+.tittle {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #cdcbcb;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.subTittle {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.cardDescription {
+  color: #4a5568;
+  flex-grow: 1;
+  margin-bottom: 1rem;
+  max-height: 8rem;
+  overflow-y: auto;
+}
+.cardDescription::-webkit-scrollbar {
+  width: 4px;
+}
+.cardDescription::-webkit-scrollbar-thumb {
+  background: rgba(155, 155, 155, 0.5);
+  border-radius: 2px;
+}
+
+.techList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.techBadge {
+  background: #393e46;
+  color: #fff;
+  font-size: 0.875rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+}
+
+.cardLink {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  color: #1e90ff;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.cardLink:hover {
+  color: #63b3ed;
+}
+
+.linkIcon {
+  margin-left: 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* Referans kart stili */
+.referenceBlockquote {
+  background: #fff;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  position: relative;
+}
+.referenceBlockquote::before {
+  content: '“';
+  font-size: 3rem;
+  color: #4a5568;
+  position: absolute;
+  top: -0.5rem;
+  left: 1rem;
+}
+.referenceText {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  color: #333;
+}
+.referenceAuthor {
+  display: block;
+  text-align: right;
+  font-size: 0.875rem;
+  color: #555;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 900px) {
   .cardGrid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);   /* Her zaman 3 kart */
-    gap: 2rem;
-    align-items: stretch;
-    justify-items: stretch;
-    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
   }
-
-  @media (max-width: 900px) {
-    .cardGrid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  @media (max-width: 600px) {
-    .cardGrid {
-      grid-template-columns: 1fr;
-    }
-  }
-  
   .referenceGrid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);   /* Her zaman 3 kart */
-    gap: 3rem;
-    align-items: stretch;
-    justify-items: stretch;
-    width: 100%;
+    grid-template-columns: 1fr;
   }
-  
+}
+
+@media (max-width: 600px) {
+  .cardGrid,
+  .referenceGrid {
+    grid-template-columns: repeat(1, 1fr);
+    width: auto;
+    justify-items: center;
+    margin: 0 auto;
+  }
+  .projectsWrapper,
+  .referenceWrapper {
+    padding: 0.5rem;
+  }
   .card {
-    background: #ffffff;
-    border-radius: 0.5rem;
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    text-align: center !important;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    height: 100%;
+    padding: 0.5rem;
   }
-  
-  .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-  }
-  
   .cardTitle {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #000000;
-    margin-bottom: 0.5rem;
-
+    font-size: 1.25rem;
   }
-
-  .tittle{
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: #ffffff;
-    margin-bottom: 1rem;
-    text-align: center;
-  }
-  
   .subTittle {
-    font-size: 1rem;
-    color: #3b1ebd !important;
-    margin-bottom: 1rem;
+    font-size: 0.875rem;
   }
-  
   .cardDescription {
-    color: #4a5568;
-    flex-grow: 1;
-    margin-bottom: 1rem;
-    max-height: 8rem;      
-    overflow-y: auto;      
+    font-size: 0.9rem;
+    max-height: 6rem;
   }
-  
-  .cardDescription::-webkit-scrollbar {
-    width: 4px;
-  }
-  .cardDescription::-webkit-scrollbar-thumb {
-    background: rgba(155, 155, 155, 0.5);
-    border-radius: 2px;
-  }
-  
-  .techList {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-  }
-  
   .techBadge {
-    background: #393e46;
-    color: #ffffff;
-    font-size: 0.875rem;
-    padding: 0.25rem 0.75rem;
-    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
   }
-  
-  .cardLink {
-    margin-top: auto;
-    display: inline-flex;
-    align-items: center;
-    color: #1e90ff;
-    font-weight: 500;
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
-  
-  .cardLink:hover {
-    color: #63b3ed;
-  }
-  
-  .linkIcon {
-    margin-left: 0.5rem;
-    font-size: 0.875rem;
-  }
-  
-  .referenceBlockquote {
-    background: #ffffff;
-    border-radius: 0.5rem;
-    padding: 1.5rem;
-    color: #e5e5e5;
-    position: relative;
-  }
-  
-  .referenceBlockquote::before {
-    content: '“';
-    font-size: 3rem;
-    color: #4a5568;
-    position: absolute;
-    top: -0.5rem;
-    left: 1rem;
-  }
-  
-  .referenceText {
-    font-size: 1rem;
-    line-height: 1.5;
-    margin-bottom: 1rem;
-  }
-  
-  .referenceAuthor {
-    display: block;
-    text-align: right;
-    font-size: 0.875rem;
-    color: #9ca3af;
-    font-style: normal;
-  }
-  
+}

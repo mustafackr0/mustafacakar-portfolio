@@ -37,8 +37,9 @@ const references = [
 export default function Content() {
   return (
     <div className={styles.mainContainer}>
-      <div style={{display:"flex", flexDirection:"column", alignItems:"center", backgroundColor:"rgb(34 34 34)", padding:"2rem", borderRadius:"8px"}}>
+      <div className={styles.subContainer}>
         <h2 className={styles.tittle}>Projects & Experiences</h2>
+        <hr className={styles.divider} />
         <div className={styles.projectsWrapper}>
             <div className={styles.cardGrid}>
                 {projects.map((project, idx) => (
@@ -60,8 +61,10 @@ export default function Content() {
         </div>
       </div>
 
-      <div style={{display:"flex", flexDirection:"column", alignItems:"center", backgroundColor:"rgb(34 34 34)", padding:"2rem", borderRadius:"8px"}}>
+      <div className={styles.subContainer}>
         <h2 className={styles.tittle}>Referances</h2>
+        <hr className={styles.divider} />
+
         <div className={styles.referenceWrapper}>
             <div className={styles.referenceGrid}>
                 {references.map((ref, idx) => (

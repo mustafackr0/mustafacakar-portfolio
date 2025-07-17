@@ -1,70 +1,81 @@
-// src/app/page.tsx
+/* File: src/app/page.tsx */
+'use client'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import styles from './page.module.css'
+import { AiFillLinkedin, AiFillGithub, AiFillInstagram, AiOutlineClose } from 'react-icons/ai'
+import { createPortal } from 'react-dom'
+import Content from '../components/Content'
 
 export default function Home() {
+  const [isModalOpen, setModalOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   return (
-    <main className="min-h-screen flex flex-col items-center p-8 space-y-16">
-      
-      {/* 1. Hero */}
-      <div className="flex flex-col md:flex-row items-center md:items-start md:space-x-8">
+    <main className={styles.container}>
+      {/* Hero */}
+      <div className={styles.header}>
         <Image
           src="/images/avatar.png"
           alt="Mustafa Çakar"
-          width={150}
-          height={150}
-          className="rounded-full"
+          width={400}
+          height={400}
+          className={styles.avatar}
         />
-        <div className="mt-6 md:mt-0 text-center md:text-left">
-          <h1 className="text-4xl font-bold">Mustafa Çakar</h1>
-          <p className="text-lg text-gray-600">
-            Full Stack & Game Developer.<br/>
-            Next.js, Node.js, Unity, MySQL, Redis, WebSocket bilgisiyle projeler üretiyorum.
+        <div className={styles.tittleContainer}>
+          <h1 className={styles.tittle}>Mustafa Çakar</h1>
+          <p>
+            <span className={styles.subTittle}>
+              Software Engineer - Full Stack & Game Developer.
+            </span>
+            <br />
+            I Develop Backend, Games, Websites and Mobile Applications.
           </p>
+          <div className={styles.socialLinks}>
+            <a href="https://www.linkedin.com/in/mustafacakar0/" target="_blank" rel="noopener noreferrer">
+              <AiFillLinkedin size={40} />
+            </a>
+            <a href="https://github.com/mustafackr0" target="_blank" rel="noopener noreferrer">
+              <AiFillGithub size={40} />
+            </a>
+            <a href="https://instagram.com/mustfackr1" target="_blank" rel="noopener noreferrer">
+              <AiFillInstagram size={40} />
+            </a>
+          </div>
+          <button onClick={() => setModalOpen(true)} className={styles.resumeButton}>
+            Özgeçmişi Görüntüle
+          </button>
         </div>
       </div>
 
-      {/* 2. Projelerim */}
-      <section id="projects" className="w-full max-w-4xl">
-        <h2 className="text-2xl font-semibold mb-6">Projelerim</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Örnek kart */}
-          <a
-            href="https://github.com/mustafackr0/auth-api-laravel"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-6 border rounded-lg hover:shadow-lg transition"
-          >
-            <h3 className="text-xl font-bold mb-2">Project One</h3>
-            <p className="text-gray-600">Kısa açıklama burada yer alır.</p>
-          </a>
-          {/* Birden fazla kart ekle */}
-          <a
-            href="https://github.com/mustafackr0/hotel-booking-API"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-6 border rounded-lg hover:shadow-lg transition"
-          >
-            <h3 className="text-xl font-bold mb-2">Project Two</h3>
-            <p className="text-gray-600">Başka bir kısa açıklama.</p>
-          </a>
-        </div>
-      </section>
+      <div className={styles.contentContainer}>
+        <Content />
+      </div>
 
-      {/* 3. Referanslar */}
-      <section id="references" className="w-full max-w-2xl">
-        <h2 className="text-2xl font-semibold mb-6">Referanslar</h2>
-        <div className="space-y-8">
-          <blockquote className="pl-4 border-l-4 border-gray-300 italic">
-            “Mustafa ile çalışmak tam bir zevkti. Projemiz zamanında ve kusursuz teslim edildi.”
-            <cite className="block mt-2 text-sm text-gray-500">— Ali Yılmaz, XYZ Şirketi</cite>
-          </blockquote>
-          <blockquote className="pl-4 border-l-4 border-gray-300 italic">
-            “Teknik becerileri ve iletişimi mükemmel. Kesinlikle tekrar çalışmayı isteriz.”
-            <cite className="block mt-2 text-sm text-gray-500">— Ayşe Demir, ABC AŞ</cite>
-          </blockquote>
-        </div>
-      </section>
-
+      {mounted && isModalOpen && createPortal(
+        <div className={styles.modalOverlay} onClick={() => setModalOpen(false)}>
+          <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
+            <button className={styles.closeButton} onClick={() => setModalOpen(false)}>
+              <AiOutlineClose size={24} />
+            </button>
+            <iframe
+              src="/MustafaÇakar.pdf"
+              style={{ width: '100%', height: '100%', border: 'none' }}
+              title="Özgeçmiş"
+            />
+            <div style={{ position: 'absolute', bottom: '2rem', width: '100%', textAlign: 'center' }}>
+              <a href="/MustafaÇakar.pdf" download className={styles.resumeButton}>
+                İndir
+              </a>
+            </div>
+          </div>
+        </div>,
+        document.body
+      )}
     </main>
   )
 }

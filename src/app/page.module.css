@@ -1,0 +1,121 @@
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+  }
+  
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center !important;
+
+    p{
+        font-size: 1.4rem;
+        font-weight: 500;
+        color: #ffffff;
+    }
+
+    
+}
+.tittleContainer {
+    flex-direction: column;
+    padding-left: 2rem;
+}
+
+.tittle{
+    font-size: 4rem;
+    font-weight: 600;
+}
+
+.subTittle{
+    font-size: 1.6rem;
+    font-weight: 500;
+    /* color: #cf4f4f; */
+}
+.socialLinks{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.avatar {
+    border-radius: 50%;
+}
+
+
+  .heroText {
+    text-align: center;
+  }
+.contentContainer
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.contentContainer h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.contentContainer p {
+    font-size: 1.2rem;
+    color: #4b5563; /* gray-700 */
+    text-align: center;
+    max-width: 800px;
+}
+/* Modal Styles */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .modalContent {
+    background: white;
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .closeButton {
+    position: absolute;
+    top: 6rem;
+    right: 2rem;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  .resumeButton {
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: background-color 0.2s;
+    max-width: fit-content;
+  }
+  .resumeButton:hover {
+    background-color: #1e40af;
+  }
